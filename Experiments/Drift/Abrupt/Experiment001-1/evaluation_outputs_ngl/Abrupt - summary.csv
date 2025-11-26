@@ -1,0 +1,4 @@
+file,Exact Match_mean,Edit Distance_mean,ROUGE-L_mean,ROUGE-L_std,ROUGE-L_median,ROUGE-L_min,ROUGE-L_max,Cosine Similarity_mean,ChrF_mean,BERTScore_mean
+LLM-Greedy,0,0.759,0.803,0.135,0.81,0.171,1,0.865,80.374,0.911
+LLM-Temp Scaled,0,0.747,0.79,0.137,0.8,0.091,1,0.863,79.199,0.907
+ODD(LLM + Prefix Tree),0.096,0.796,0.828,0.133,0.852,0.187,1,0.968,83.147,0.928
