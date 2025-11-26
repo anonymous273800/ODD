@@ -52,13 +52,73 @@ Using a unified Online Domain Shift (ODS) benchmark covering abrupt, incremental
 These results validate ODD’s ability to adapt reliably to dynamic linguistic environments.
 
 
-*******************************************************************************************************
-Appendix:
-Each trie entry stores three features:
-Recency (R), Length (L), and Frequency (F). R tracks when a continuation last appeared, L measures how closely its span matches the query prefix, and F counts how often it occurs. These features are updated at each node whenever new instances appear, allowing the trie to function as a dynamic scoring mechanism that reflects the temporal, structural, and statistical relevance of domain knowledge.
-Consider two domain sequences inserted into the n-gram Trie: the older s1 (“Activate your plan 4G”) and the more recent s2 (“Please activate your plan 5G”). For clarity, this illustration uses word-level nodes, while the actual implementation constructs the Trie over token-level sequences. The node-level features (F, L,R) capture the structural, statistical, and temporal properties of these sequences (see Figure 1): Recency (R): Records the most recent observation time. The “4G” leaf carries an earlier timestamp, whereas “5G” reflects the newer update, enabling recency-aware scoring. Length (L): Denotes the depth of the token in the sequence, rewarding longer, more specific matches (e.g., L = 5 for the full “5G” path). Frequency (F): Counts the number of times a prefix appears. For example, the shared path “activate → your → plan” has F = 2.
 
-Figure 1: ![ODD Algorithm](images/trie-exmample-words.png)
+## **Trie Features Overview**
+
+Each trie entry stores three features: **Recency (R)**, **Length (L)**, and **Frequency (F)**.
+
+* **Recency (R)** tracks when a continuation last appeared.
+* **Length (L)** measures how closely a prefix or span matches the query.
+* **Frequency (F)** counts how frequently the sequence appears.
+
+These features are updated at each node whenever new instances are inserted, enabling the trie to function as a dynamic scoring mechanism that reflects **temporal**, **structural**, and **statistical** relevance.
+
+### **Example**
+
+Consider two domain sequences inserted into the n-gram trie:
+
+* **s₁**: “Activate your plan 4G” *(older)*
+* **s₂**: “Please activate your plan 5G” *(more recent)*
+
+For illustration, this example uses **word-level nodes**, while the actual implementation operates on **token-level sequences**.
+
+The trie’s node-level features capture:
+
+* **Recency (R)**
+
+  * “4G” has an older timestamp
+  * “5G” has the newer timestamp
+* **Length (L)**
+
+  * deeper paths reflect longer, more specific matches (e.g., L = 5 for the full “5G” path)
+* **Frequency (F)**
+
+  * shared prefixes such as `activate → your → plan` yield F = 2
+
+![Trie Example](images/trie-exmample-words.png)
+
+---
+
+## **ODD Algorithm**
+
+![ODD Algorithm](images/ODDAlgorithm.png)
+
+---
+
+## **Drift in Datasets**
+
+### Abrupt Drift
+
+![Abrupt Drift](images/AbruptDriftPlaceholders.png)
+
+### Incremental Drift
+
+![Incremental Drift](images/IncrementalDriftPlaceholders.png)
+
+### Gradual Drift
+
+![Gradual Drift](images/GradualDriftPlaceholders.png)
+
+---
+
+## **Experimental Results**
+
+![Abrupt Results](images/Exp001_Abrupt_nlg_barplot.png)
+
+![Results Table](images/results-table.png)
+
+
+
 
 
 
