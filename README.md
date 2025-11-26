@@ -54,8 +54,11 @@ These results validate ODD’s ability to adapt reliably to dynamic linguistic e
 
 *******************************************************************************************************
 Appendix:
-Illustrative Trie Example using Words (The actual implementation using tokens):
-![ODD Algorithm](images/trie-exmample-words.png)
+Each trie entry stores three features:
+Recency (R), Length (L), and Frequency (F). R tracks when a continuation last appeared, L measures how closely its span matches the query prefix, and F counts how often it occurs. These features are updated at each node whenever new instances appear, allowing the trie to function as a dynamic scoring mechanism that reflects the temporal, structural, and statistical relevance of domain knowledge.
+Consider two domain sequences inserted into the n-gram Trie: the older s1 (“Activate your plan 4G”) and the more recent s2 (“Please activate your plan 5G”). For clarity, this illustration uses word-level nodes, while the actual implementation constructs the Trie over token-level sequences. The node-level features (F, L,R) capture the structural, statistical, and temporal properties of these sequences (see Figure 1): Recency (R): Records the most recent observation time. The “4G” leaf carries an earlier timestamp, whereas “5G” reflects the newer update, enabling recency-aware scoring. Length (L): Denotes the depth of the token in the sequence, rewarding longer, more specific matches (e.g., L = 5 for the full “5G” path). Frequency (F): Counts the number of times a prefix appears. For example, the shared path “activate → your → plan” has F = 2.
+
+Figure 1: ![ODD Algorithm](images/trie-exmample-words.png)
 
 
 
