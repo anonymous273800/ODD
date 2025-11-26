@@ -50,3 +50,12 @@ Using a unified Online Domain Shift (ODS) benchmark covering abrupt, incremental
 * **+13.6 percent Cosine Similarity** (relative gain)
 
 These results validate ODD’s ability to adapt reliably to dynamic linguistic environments.
+
+
+*******************************************************************************************************
+Appendix:
+Illustrative Trie Example using Words (The actual implementation using tokens):
+![ODD Algorithm](images/trie-exmample-words.png)
+
+
+
